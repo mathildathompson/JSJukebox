@@ -26,10 +26,36 @@
 
         // Search soundcloud for artists
         SC.get('/tracks', { q: searchTerm, license: 'cc-by-sa' }, function(tracks) {
-          for(track in tracks) {
-            console.log(tracks[track]);
+          for(track in tracks)
+      //      {
+      //       var catalog = document.getElementById("catalog");
+      //       var img = document.createElement("img");
+      //       img.setAttribute("src", (tracks[track]["artwork_ url"]));
+      //       catalog.appendChild(img);
+            
+      //     }
+      //   });
+      // };
+       {
+            var img = document.createElement('img');
+            var catalog = document.getElementById('catalog');
+            var div = document.createElement('div');
+            
+            
+            img.setAttribute("src",(tracks[track]["artwork_url"]));
+            div.setAttribute("class","music");
+            
+            if((tracks[track]["artwork_url"])){
+              catalog.appendChild(div);
+              div.appendChild(img);
+            }
+            function overlay(){
+              el = document.getElementById("overlay");
+              el.style.visibility = (el.style.visibility == "visible")?"hidden":"visible";
+
+            }
           }
-        });
+      });
       };
     </script>
   </body>
